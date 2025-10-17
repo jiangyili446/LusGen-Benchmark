@@ -1,0 +1,3 @@
+A node called DetermineWindSpeed is defined, which receives three real number inputs: windSpeedFMSSide, windSpeedRes, and windSpeedMax, and returns a real number output, windSpeed. Inside the node, a conditional statement is used to calculate the value of windSpeed: if the wind speed calculated by the function WindSpeedValue (based on the inputs windSpeedFMSSide and windSpeedRes) is greater than or equal to windSpeedMax, then the value of windSpeed is set to windSpeedMax; otherwise, the windSpeed value equals the wind speed calculated by the same function.
+
+The node also declares a property to ensure that if windSpeed is greater than or equal to windSpeedMax, then the value of windSpeed always equals windSpeedMax.

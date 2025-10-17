@@ -1,0 +1,1 @@
+Define a type foo, and define a function bar that takes a parameter x of type foo and returns a value y of type foo. Inside the function, the value of y is directly assigned the value of x.

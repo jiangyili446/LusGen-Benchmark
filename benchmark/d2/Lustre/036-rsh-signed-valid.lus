@@ -1,0 +1,7 @@
+node top (reset: bool) returns (OK: bool);
+var i : int;
+let
+  i =  64 -> ((pre i) / 4);
+  OK = (i >= 0);
+  --%PROPERTY OK;
+tel

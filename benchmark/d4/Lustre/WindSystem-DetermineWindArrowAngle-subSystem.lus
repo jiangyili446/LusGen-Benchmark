@@ -1,0 +1,17 @@
+node DetermineWindArrowAngle_Subsystem (
+    value,
+    resolution: real)
+returns (
+    result: real);
+var
+    num1,
+    num2: real;
+let
+    num1 = if (value/resolution >= 0.0) then value/resolution else -(value/resolution);
+    num2 = real(int(num1+0.5))*resolution;
+    result =  if (value >= 0.0) then num2
+            else -num2;
+
+    -- property 11
+    check num1 < 0.0 => num2 = -num1;
+tel;

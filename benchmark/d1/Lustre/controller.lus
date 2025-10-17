@@ -1,0 +1,19 @@
+node ToInt(b : bool) returns(i : int);
+let
+  i = (if (b) then (1) else (0));
+tel
+
+node Max (a : real; b : real) returns (z : real);
+let
+  z = (if (((a) >= (b))) then (a) else (b));
+tel
+
+node UnchangedReal(n : real) returns (b : bool);
+let
+  b = ((true) -> (((n) = ((pre (n))))));
+tel
+
+node InitiallyHolds (X : bool) returns (Y : bool);
+let
+  Y = ((X) -> (true));
+tel

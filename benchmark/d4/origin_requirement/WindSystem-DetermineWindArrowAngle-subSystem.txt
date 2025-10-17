@@ -1,0 +1,9 @@
+Defines a node named DetermineWindArrowAngle_Subsystem, which receives two real number inputs, value and resolution, and returns a real number result. Two variables, num1 and num2, are defined internally.
+
+The calculation logic for num1 is: firstly, divide value by resolution. If the result is greater than or equal to 0, then num1 is this result; if it is less than 0, then num1 is the negative of this result.
+
+The calculation logic for num2 is to add 0.5 to num1, then round it, convert it to a real number, and multiply by resolution. This is done to round num1 and map the result back to the original scale.
+
+Finally, the calculation logic for result is: if value is greater than or equal to 0, then result is num2; if value is less than 0, then result is the negative of num2. This way, the value of result ultimately remains consistent with the sign of value, while also being adjusted and processed numerically.
+
+Moreover, the node includes a property check to ensure that if num1 is less than 0, then num2 should be equal to the opposite of num1. This ensures logical consistency.

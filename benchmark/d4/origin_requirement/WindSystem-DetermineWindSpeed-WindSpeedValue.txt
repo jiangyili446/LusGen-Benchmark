@@ -1,0 +1,9 @@
+A node named WindSpeedValue is defined, which accepts two parameters: value and resolution, both of which are of real number type, and returns a real number result. Two variables, num1 and num2, are internally defined, also of real number type.
+
+The calculation logic for num1 is as follows: first, divide value by resolution. If the result is greater than or equal to 0, then num1 is the result of dividing value by resolution; if the result is less than 0, then num1 is set to the negative of the result of dividing value by resolution.
+
+The calculation logic for num2 is as follows: add 0.5 to num1, then round to the nearest integer, convert it back to a real number, and multiply by resolution. This is done for the purpose of rounding.
+
+The calculation logic for result is: if num2 is greater than or equal to 0, then the value of result is num2; otherwise, the value of result is the negative of num2.
+
+Additionally, there is a property declared within the node, which checks that if num1 is less than 0, then num2 should be equal to -num1. This property is used to ensure the correctness of num2 in specific situations.

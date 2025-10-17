@@ -1,0 +1,12 @@
+定义socks节点：  
+- R1: 输入：接收两个整数类型的输入a和b。
+- R2: 输出：返回两个整数类型的输出fashionable_days和same_days。
+- 内部变量：无。
+- 功能逻辑：
+    - R3: fashionable_days等于min(a, b)；
+    - R4: 在穿不同颜色袜子的每一天后，a和b各减少1；
+    - R5: 剩余的红蓝袜子数量分别为a'=a-fashionable_days和b'=b-fashionable_days；
+    - R6: same_days等于floor((a'^2 + b'^2) / 2)，即剩余袜子能组成同色袜子对的最大天数。
+- 验证规则：
+    - R7: fashionable_days等于a和b中小的那个。
+    - R8: same_days大于等于0。

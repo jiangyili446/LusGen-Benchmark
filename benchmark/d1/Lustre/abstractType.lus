@@ -1,0 +1,5 @@
+type foo;
+function bar (x:foo) returns (y:foo);
+let
+ y = x;
+tel

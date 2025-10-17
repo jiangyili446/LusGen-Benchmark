@@ -1,0 +1,20 @@
+node SystemParameters ()
+returns (
+    windDirectionRes,
+    windSpeedRes,
+    windSpeedMax,
+    windSpeedMin,
+    windSpeedUpperHyst: real);
+let
+    windDirectionRes = 1.0;
+    windSpeedRes = 1.0;
+    windSpeedMax = 255.0;
+    windSpeedMin = 5.0;
+    windSpeedUpperHyst = 7.0;
+
+    -- 性质1：风速分辨率为正数
+    --%PROPERTY windSpeedRes > 0.0;
+
+    -- 性质2：最大风速大于最小风速
+    --%PROPERTY windSpeedMax > windSpeedMin;
+tel;

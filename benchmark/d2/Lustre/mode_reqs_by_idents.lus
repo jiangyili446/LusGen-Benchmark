@@ -1,0 +1,20 @@
+node abs (in: int) returns (out: int) ;
+let
+  out = if in < 0 then -in else in ;
+  (*%PROPERTY out >= 0 ; *)
+tel
+
+node has_been_true(in: bool) returns (out: bool) ;
+let
+  out = in or (false -> pre out) ;
+tel
+
+
+node my_node (in: int) returns (out: int) ;
+var mem: int ;
+let
+  mem = abs(in) + (0 -> pre mem) ;
+  out = if in < 0 then in else mem ;
+
+  --%PROPERTY out - in >= 0 ;
+tel

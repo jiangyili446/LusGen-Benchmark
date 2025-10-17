@@ -1,0 +1,1 @@
+Define a node Fibonacci, which receives a boolean input but does not use it, and returns an integer Fib. The logic for calculating Fib is as follows: it starts with an initial value of 1, and then uses the sum of the previous Fib value and 1 as a recurrence relation to generate the next value in the Fibonacci sequence.

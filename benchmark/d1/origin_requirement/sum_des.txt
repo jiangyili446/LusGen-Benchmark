@@ -1,0 +1,3 @@
+Defines two functional modules, sum and plus. The sum module receives an integer input A and returns an integer S. The calculation logic of S is to add the input A to the previous value of S, with an initial value of S at zero, indicating that no historical value is available at the first calculation. 
+
+The plus module receives two integer inputs A and B and returns an integer X. The calculation logic of X is to add A and B.

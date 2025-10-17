@@ -1,0 +1,21 @@
+定义DetermineWindDisplay节点：  
+- 输入：  
+  - R1: windSpeedFMSSide：一个实数类型的输入，表示FMS侧的风速
+  - R2: windSpeedMin：一个实数类型的输入，表示风速下限
+  - R3: windSpeedUpperHyst：一个实数类型的输入，表示风速上限（带滞回）
+  - R4: validWindMode：一个布尔类型的输入，表示风的有效模式状态
+  - R5: fmsColor：一个整数类型的输入，表示FMS颜色值
+- 输出：  
+  - R6: windVisibility：一个布尔类型的输出，表示风的可见性
+  - R7: windDisplayColor：一个整数类型的输出，表示风的显示颜色
+- 内部变量：  
+  - R8: condition：一个布尔类型的内部变量，初始值为false，并在之后时刻保持其前一时刻的值
+- 功能逻辑：  
+  - R9: condition的初始值为false，并在随后的时刻保持其之前的值；
+  - windVisibility的计算方式如下：  
+    - R10: 如果condition为真，则windVisibility为（windSpeedFMSSide ≥ windSpeedMin）的结果；
+    - R11: 如果condition为假，则windVisibility为（windSpeedFMSSide > windSpeedUpperHyst）的结果；
+    - R12: 最终的windVisibility是上述结果与validWindMode进行逻辑与运算后的值；
+  - R13: windDisplayColor的值直接取自输入参数fmsColor。
+- 验证规则：  
+  - R14: 当validWindMode为假时，windVisibility必须也为假（即：not validWindMode implies not windVisibility），使用kind2验证语法检测该性质是否恒成立。

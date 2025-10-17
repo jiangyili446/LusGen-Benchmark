@@ -1,0 +1,21 @@
+node DetermineWindDisplay (
+    windSpeedFMSSide,
+    windSpeedMin,
+    windSpeedUpperHyst: real;
+    validWindMode,
+    fmsColor: int)
+returns (
+    windVisibility: bool;
+    windDisplayColor: int);
+var
+    condition: bool;
+let
+    condition = false -> pre(condition);
+    windVisibility =    (   if condition then (windSpeedFMSSide >= windSpeedMin)
+                            else (windSpeedFMSSide > windSpeedUpperHyst) )
+                        and parseIntToBool(validWindMode);
+    windDisplayColor = fmsColor;
+
+    -- property 1
+    check validWindMode = 0 => not(windVisibility);
+tel;

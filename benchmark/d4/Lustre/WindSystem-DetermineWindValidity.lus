@@ -1,0 +1,45 @@
+const
+    PFDMenuType: int = 0;
+    AFDConfigurationTypePFD: int = 1;
+    MFDMenuType:int = 0;
+    MFDModelTypeBLANK:int = 0;
+    MFDModelTypePPSN:int = 1;
+    MFDModelTypePLAN:int = 2;
+    MFDModelTypeTCAS:int = 3;
+
+node DetermineWinValidity(
+    trueRefHeadingIsValid, 
+    windDirectionTrueFMSSideIsValid, 
+    windSpeedFMSSideIsValid, 
+    unusualAltitude, 
+    pfdActiveMenu, 
+    duConfig, 
+    mfdAcitveLowerMenu, 
+    mfdMode2: int)
+returns (
+    validWindMode: int);
+let
+    validWindMode = if duConfig = AFDConfigurationTypePFD 
+                    then    parseBoolToInt(
+                            (parseIntToBool(trueRefHeadingIsValid) and parseIntToBool(windDirectionTrueFMSSideIsValid)) 
+                            and parseIntToBool(windSpeedFMSSideIsValid)
+                            and not parseIntToBool(unusualAltitude)
+                            and (pfdActiveMenu = PFDMenuType) )
+                    else    parseBoolToInt(
+                            (parseIntToBool(trueRefHeadingIsValid) and parseIntToBool(windDirectionTrueFMSSideIsValid)) 
+                            and parseIntToBool(windSpeedFMSSideIsValid)
+                            and (mfdAcitveLowerMenu = MFDMenuType)
+                            and ( mfdMode2 = MFDModelTypeBLANK or mfdMode2 = MFDModelTypePPSN or mfdMode2 = MFDModelTypePLAN or mfdMode2 = MFDModelTypeTCAS ) );
+    -- property 1
+    check not(parseIntToBool(trueRefHeadingIsValid)) => validWindMode = 0;
+    -- property 2
+    check not(parseIntToBool(windDirectionTrueFMSSideIsValid)) => validWindMode = 0;
+    -- property 3
+    check not(parseIntToBool(windSpeedFMSSideIsValid)) => validWindMode = 0;
+    -- property 4
+    check duConfig=AFDConfigurationTypePFD and parseIntToBool(unusualAltitude) => validWindMode = 0;
+    -- property 5
+    check duConfig=AFDConfigurationTypePFD and pfdActiveMenu<>PFDMenuType => validWindMode = 0;
+    -- property 6
+    check duConfig<>AFDConfigurationTypePFD and mfdAcitveLowerMenu<>MFDMenuType => validWindMode = 0;
+tel;

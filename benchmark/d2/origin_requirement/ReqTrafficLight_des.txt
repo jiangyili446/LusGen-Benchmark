@@ -1,0 +1,20 @@
+Two main nodes are defined: node TrafficLight and node ReqTrafficLight. The TrafficLight node receives a Boolean input Button and returns five Boolean outputs: Red, Yellow, Green, Walk, and Don't Walk. Two integer variables, Phase and prePhase, are internally defined. The initial value of prePhase is 0 and it subsequently inherits the value of prePhase. The logic for calculating Phase is: when the Button is pressed, Phase is set to 1; if prePhase is between 0 and 10, then Phase is set to prePhase plus 1; otherwise, Phase is set to 0. Based on the value of Phase, Green is true when Phase is 0, Yellow is true when Phase is 1, Red is true when Phase is greater than 1; Walk is true between Phase 3 and 9, while Don't Walk is the negation of Walk.
+
+The ReqTrafficLight node receives the same input Button and calls the TrafficLight node, obtaining the corresponding traffic signal status. A Boolean variable CarsAllowed is internally defined, indicating that vehicles are allowed to pass when the signal is green or yellow. This node includes multiple checks for safety properties:
+- Property R1 ensures that when cars are allowed to pass, Walk is always false;
+- Property R2 ensures that Red and Green signals are never illuminated simultaneously;
+- Property R3 ensures that there is always one signal light illuminated;
+- Property R4 ensures that Walk is true only when the Red light is on;
+- Property R5 ensures that Walk and Don't Walk states are mutually exclusive;
+- Property R6 ensures that Green is not immediately followed by Red;
+- Property R7 ensures that under previously allowing cars to pass, the Walk state is false;
+- Property R8 ensures that if Walk was true in the previous step, CarsAllowed is false;
+- Property R9 ensures the Yellow signal cannot be illuminated in two consecutive steps;
+- Property R10 ensures Red can directly change to Green;
+- Property R11 ensures that if the button is never pressed, the signal is Green;
+- Property R12 ensures the Walk signal is false when the Red signal is on;
+- Property R13 ensures the Yellow light can only be on after the Green light;
+- Property R14 ensures the Red light is illuminated for no more than 9 consecutive steps;
+- Property R15 ensures that when the Red light is on, the Walk light remains false.
+
+Additionally, there are two auxiliary nodes: Sofar, used for checking the state of Boolean values under maximum invariance conditions, and Count, used to calculate the number of consecutive steps the Boolean value is true.

@@ -1,0 +1,17 @@
+Defines multiple nodes, with the logic primarily revolving around an integer switch and some auxiliary temporal operators.
+
+The SwitchInt node receives a boolean input Set and an integer input X, and returns an integer Y. The logic for calculating Y is: when Set is true, Y equals X; when Set is false, Y retains its previous value, allowing Y to maintain its historical value when no new value is set.
+
+The Sofar node receives a boolean input X and returns a boolean output Y. The logic for Y is: when X is true and the previous Y was true, Y will remain true. This node is used to track the historical state of input X.
+
+The First node receives an integer X and returns an integer a. The logic of the node is: a will equal the value of X and will maintain its previous value at each moment.
+
+The Since node receives two boolean inputs X and Y, and returns a boolean output SinceXY. The logic is: when X is true, SinceXY is true; if Y is true and the previous SinceXY was false, SinceXY remains in its previous state. This is used to determine how long the state of Y persists after X becomes true.
+
+The SinceIncl node is similar to Since but requires Y to be true in the condition for returning true. Its logic is: if Y is true and X is true or the previous SinceXY was false, SinceXY becomes true.
+
+Next, the ReqSwitchIgnoresX node receives a boolean input Set and two integer inputs X1 and X2, returning a boolean output P. This node uses the Sofar function to ensure that with Set being true and X1 equal to X2, the output of the SwitchInt node is the same when Set is false. This proves that when Set is false, SwitchInt ignores input X.
+
+The ReqSwitchIntSimple node receives a boolean input Set and an integer input X, returning two boolean outputs P and Q. Based on the definition of SwitchInt, the logic for P is: if after the last setting to 3 the switch has not been set, Y should be 3. The logic of Q involves using the SinceIncl node to attempt to prove that such an assumption would lead to a contradiction.
+
+Finally, the ReqSwitchInt node receives a boolean input Set, an integer input X, and an integer constant A, returning a boolean output P. This node uses the First node to track the value of constant A, with the logic being: if after the last set to A the switch has not been set, Y will remain A. This indicates that Y will only retain the last value set historically.

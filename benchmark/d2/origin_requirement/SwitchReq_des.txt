@@ -1,0 +1,12 @@
+Define a node called Switch, used to simulate a switch with two buttons (Set and Reset). The node Switch takes three boolean inputs: Set, Reset, and Init, and returns a boolean output X. The logic for calculating X is: when Set is pressed, X is true; when Reset is pressed, X is false; if neither Set nor Reset is pressed, the value of X is determined by Init and maintains its previous value.
+
+The subsequent node, SwitchReq, describes multiple safety requirements related to the Switch node, namely: 
+1. R1: When the Set button is pressed, the switch should be true;
+2. R2: When the Reset button is pressed, the switch should be false;
+3. R3: When neither the Set nor Reset button is pressed, the state of the switch should remain unchanged;
+4. R4: When Set is true, the behavior of the switch should remain consistent regardless of the state of Reset;
+5. R5: If the switch is true (on), it will remain in that state until Reset is pressed next;
+6. R6: If the switch is false (off), it will remain in that state until Set is pressed next;
+7. R7: When neither Set nor Reset button is pressed, the initial state of the switch should remain unchanged.
+
+Under the logic satisfying these requirements, the SwitchReq node utilizes an intermediate variable X, which is determined by the output of the Switch node, and verifies the correctness of the above seven requirements based on various boolean combinations. These requirements are proposed in the form of boolean expressions and use auxiliary temporal operators to extend their constraint conditions.

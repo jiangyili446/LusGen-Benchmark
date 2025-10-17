@@ -1,0 +1,9 @@
+A node called DetermineWindDisplay is defined, which receives multiple inputs including wind speed (windSpeedFMSSide), a lower wind speed limit (windSpeedMin), an upper wind speed hysteresis limit (windSpeedUpperHyst), a valid wind mode (validWindMode), and a color value (fmsColor). The outputs of the node include wind visibility (windVisibility) and display color (windDisplayColor).
+
+Within the node, a variable named condition is defined to control the logic of wind visibility. The initial value of condition is false and it retains its previous value subsequently.
+
+The logic for calculating windVisibility is as follows: If condition is true, wind visibility depends on whether windSpeedFMSSide is greater than or equal to the lower wind speed limit. If condition is false, wind visibility depends on whether windSpeedFMSSide is greater than the upper wind speed limit. The final windVisibility is also combined with validWindMode using a logical AND to ensure that wind visibility can only be true when validWindMode is true.
+
+The value of windDisplayColor is directly derived from the input fmsColor.
+
+Additionally, the node declares a property stipulating that when validWindMode is 0, windVisibility must be false to ensure that wind visibility is false in an invalid wind mode.

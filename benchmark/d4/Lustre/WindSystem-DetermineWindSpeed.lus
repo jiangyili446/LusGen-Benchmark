@@ -1,0 +1,13 @@
+node DetermineWindSpeed (
+    windSpeedFMSSide,
+    windSpeedRes,
+    windSpeedMax: real)
+returns (
+    windSpeed: real);
+let
+    windSpeed = if WindSpeedValue(windSpeedFMSSide, windSpeedRes) >= windSpeedMax then windSpeedMax
+                else WindSpeedValue(windSpeedFMSSide, windSpeedRes);
+
+    --property 8
+    check windSpeed >= windSpeedMax => windSpeed = windSpeedMax;
+tel;

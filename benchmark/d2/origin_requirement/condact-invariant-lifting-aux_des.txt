@@ -1,0 +1,9 @@
+Defines a node counters that receives three Boolean inputs a, b, and c, and returns four integers x, y, nX, and nY. Inside this node, two integer variables pre_x and pre_y, representing the previous states of x and y, are defined, along with a Boolean variable ok, which is used to indicate the validity of the state.
+
+First, nX and nY are defined as constants 5 and 3, pre_x and pre_y are initialized to 0, and in each subsequent computation cycle, they take the previous cycle's values of x and y.
+
+Next, the calculation logic for x is: if input b or c is true, x is set to 0; otherwise, if input a is true and pre_x is less than nX, then x is set to pre_x plus 1, forming an incrementing counter; otherwise, x retains the value of pre_x.
+
+Similarly, the calculation logic for y is: if input c is true, y is set to 0; otherwise, if input a is true and pre_y is less than nY, then y is set to pre_y plus 1, forming an incrementing counter; otherwise, y retains the value of pre_y.
+
+Finally, the ok variable is used to check whether the difference between x and y is less than or equal to the difference between nX and nY, and a property is declared to ensure that this condition should always hold.

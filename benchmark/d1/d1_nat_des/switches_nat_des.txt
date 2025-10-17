@@ -1,0 +1,67 @@
+<Node name="Switch">
+    <Inputs>
+        <Param name="set" type="bool"/>
+        <Param name="reset" type="bool"/>
+        <Param name="initial" type="bool"/>
+    </Inputs>
+    <Outputs>
+        <Param name="level" type="bool"/>
+    </Outputs>
+    <Func>当Set被按下时，开关X被打开；若Reset被按下，则开关X被关闭；如果两者都未被按下，则X的状态依赖于Init信号以及之前状态的值。在两者都按下的情况下，优先考虑Set的状态</Func>
+</Node>
+定义Switch节点：
+- 输入：接收三个布尔类型的输入参数
+    - set：表示设置信号
+    - reset：表示复位信号
+    - initial：表示初始状态信号
+- 输出：返回一个布尔类型的输出level。
+- 功能逻辑：
+    - 当set信号为真时，level被设置为真（开关被打开）。
+    - 当reset信号为真时，level被设置为假（开关被关闭）。
+    - 如果set和reset都为假，则level保持其前一时刻的状态值。
+    - 在set和reset同时为真的情况下，优先考虑set信号，即level被设置为真。
+
+<Node name="Switch2">
+    <Inputs>
+        <Param name="set" type="bool"/>
+        <Param name="reset" type="bool"/>
+        <Param name="initial" type="bool"/>
+    </Inputs>
+    <Outputs>
+        <Param name="level" type="bool"/>
+    </Outputs>
+    <Func>在Reset被按下时，开关X被关闭；若Set被按下，则X被打开；若两者都未按下，同样依赖于Init信号和之前状态的值。在两者都按下的情况下，优先考虑Reset的状态</Func>
+</Node>
+定义Switch2节点：
+- 输入：接收三个布尔类型的输入参数
+    - set：表示设置信号
+    - reset：表示复位信号
+    - initial：表示初始状态信号
+- 输出：返回一个布尔类型的输出level。
+- 功能逻辑：
+    - 当reset信号为真时，level被设置为假（开关被关闭）。
+    - 当set信号为真时，level被设置为真（开关被打开）。
+    - 如果set和reset都为假，则level保持其前一时刻的状态值。
+    - 在set和reset同时为真的情况下，优先考虑reset信号，即level被设置为假。
+
+<Node name="Switch3">
+    <Inputs>
+        <Param name="set" type="bool"/>
+        <Param name="reset" type="bool"/>
+        <Param name="initial" type="bool"/>
+    </Inputs>
+    <Outputs>
+        <Param name="level" type="bool"/>
+    </Outputs>
+    <Func>若Set被按下，则X被打开；如果Reset没有被按下且Init信号为真，则X的状态取决于之前的状态。在这个实现中，Reset的按下会直接影响X的关闭状态</Func>
+</Node>
+定义Switch3节点：
+- 输入：接收三个布尔类型的输入参数
+    - set：表示设置信号
+    - reset：表示复位信号
+    - initial：表示初始状态信号
+- 输出：返回一个布尔类型的输出level。
+- 功能逻辑：
+    - 当set信号为真时，level被设置为真（开关被打开）。
+    - 如果reset信号为假且initial信号为真，则level保持其前一时刻的状态值。
+    - 当reset信号为真时，level被直接设置为假（开关被关闭）。

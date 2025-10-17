@@ -1,0 +1,13 @@
+node AngularSubtract (
+    min,
+    sub: real)
+returns (
+    diff: real);
+let
+    diff =  if ((if (min-sub >= 0.0) then min-sub else sub-min) <= 180.0) then min-sub
+            else if (min-sub > 0.0) then min-sub-0.0
+            else min-sub+360.0;
+
+    -- property 13
+    check min-sub < -180.0 => diff = min-sub+360.0;
+tel;

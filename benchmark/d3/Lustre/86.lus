@@ -1,0 +1,4 @@
+node calculateMinimumElephantSteps(x : int) returns (out : int);
+let
+    out = (x + 4) / 5;
+tel

@@ -1,0 +1,27 @@
+定义DetermineWinValidity节点：  
+- 输入：接收以下输入参数  
+ - R1: trueReferenceHeadingValid：布尔类型
+ - R2: windDirectionValidFMSSide：布尔类型
+ - R3: windSpeedValidFMSSide：布尔类型
+ - R4: unusualAltitude：布尔类型
+ - R5: pfdActiveMenuType：整数类型
+ - R6: displayUnitConfiguration：整数类型
+ - R7: mfdActiveSubmenuType：整数类型
+ - R8: mfdMode2：整数类型
+- R9: 输出：返回一个整数类型的输出validWindMode。
+- 内部变量：  
+ - R10: condition1：布尔类型内部变量
+ - R11: condition2：布尔类型内部变量
+- 功能逻辑：  
+ validWindMode的值根据以下逻辑计算：  
+ - R12: 如果displayUnitConfiguration等于AFDConfigurationTypePFD：
+  所有条件（trueReferenceHeadingValid、windDirectionValidFMSSide、windSpeedValidFMSSide、!unusualAltitude、pfdActiveMenuType等于PFDMenuType）都必须为真，validWindMode才为1；否则为0。  
+ - 否则：  
+  R13: 所有条件（trueReferenceHeadingValid、windDirectionValidFMSSide、windSpeedValidFMSSide、mfdActiveSubmenuType等于MFDMenuType、mfdMode2是BLANK、PPSN、PLAN或TCAS中的任意一个）必须为真，validWindMode才为1；否则为0。
+- 验证规则：  
+ - R14: validWindMode == 0：当trueReferenceHeadingValid为假时，该规则必须成立
+ - R15: validWindMode == 0：当windDirectionValidFMSSide为假时，该规则必须成立
+ - R16: validWindMode == 0：当windSpeedValidFMSSide为假时，该规则必须成立
+ - R17: validWindMode == 0：当displayUnitConfiguration等于AFDConfigurationTypePFD且unusualAltitude为真时，该规则必须成立
+ - R19: validWindMode == 0：当displayUnitConfiguration等于AFDConfigurationTypePFD且pfdActiveMenuType不等于PFDMenuType时，该规则必须成立
+ - R20: validWindMode == 0：当displayUnitConfiguration不等于AFDConfigurationTypePFD且mfdActiveSubmenuType不等于MFDMenuType时，该规则必须成立

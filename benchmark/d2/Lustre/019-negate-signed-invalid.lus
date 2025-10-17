@@ -1,0 +1,8 @@
+node top (reset: bool) returns (OK: bool);
+var i, j : int;
+let
+  j = -5 -> -(pre j);
+  i = 100 -> -(pre i) + j;
+  OK = (i mod 5 = 0);
+  --%PROPERTY OK;
+tel

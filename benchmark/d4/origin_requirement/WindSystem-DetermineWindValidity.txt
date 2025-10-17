@@ -1,0 +1,25 @@
+Defines a node called DetermineWinValidity, which is responsible for verifying the validity of states related to wind. The node receives several input parameters, including: truth reference heading validity, wind direction validity, wind speed validity, unusual altitude, PFD active menu type, display unit configuration, MFD active sub-menu, and MFD mode 2.
+
+The return value of this node is validWindMode, indicating the validity of the wind state. Its calculation logic is as follows:
+
+1. If the display unit configuration is AFDConfigurationTypePFD, the value of validWindMode depends on multiple conditions all being true:
+   - Truth reference heading is valid.
+   - Wind direction is valid on the true FMSS side.
+   - Wind speed is valid on the FMSS side.
+   - Unusual altitude is false.
+   - PFD active menu type is PFDMenuType.
+
+2. If the display unit configuration is not AFDConfigurationTypePFD, then the value of validWindMode also depends on a series of conditions:
+   - Truth reference heading is valid.
+   - Wind direction is valid on the true FMSS side.
+   - Wind speed is valid on the FMSS side.
+   - MFD active sub-menu type is MFDMenuType.
+   - MFD mode 2 can be any of BLANK, PPSN, PLAN or TCAS.
+
+Additionally, the node includes multiple property checks to ensure validWindMode is set to 0 under certain conditions:
+- If the truth reference heading is invalid, then validWindMode must be 0.
+- If wind direction validation is invalid, validWindMode must also be 0.
+- If wind speed validation is invalid, validWindMode must likewise be 0.
+- If configured as PFD and unusual altitude exists, validWindMode must be 0.
+- If configured as PFD but the PFD active menu does not equal PFDMenuType, then validWindMode must be 0.
+- If not AFDConfigurationTypePFD and the MFD active sub-menu does not equal MFDMenuType, then validWindMode must also be 0.

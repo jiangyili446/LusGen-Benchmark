@@ -1,0 +1,5 @@
+node calculateMinimumBrainsForStrategy(N : int) returns (out : int);
+let
+    out = if N mod 2 = 0 then N / 2
+          else (N / 2) + 1;
+tel

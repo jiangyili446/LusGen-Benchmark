@@ -1,0 +1,8 @@
+node sum(A:int) returns (S:int)
+let
+  S=A+(0->pre(S));
+tel
+function plus(A,B:int) returns (X:int)
+let
+  X=A+B;
+tel

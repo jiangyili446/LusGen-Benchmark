@@ -1,0 +1,7 @@
+定义AngularSubtract节点：  
+- R1: 输入：接收两个实数类型的输入min和sub
+- R2: 输出：返回一个实数类型的输出diff
+- 内部变量：无  
+- R3: 功能逻辑：首先，判断min减去sub的结果是否大于等于零，并根据这个条件决定取min减去sub和sub减去min中的较小值。如果这个较小值小于等于180，则diff的值为min减去sub；如果这个结果大于零，则diff的值为min减去sub再减去零；否则，diff的值为min减去sub加上360
+- 验证规则：  
+    - R4: 当min - sub < -180时，diff等于min减去sub加上360，使用kind2验证语法检测是否恒成立

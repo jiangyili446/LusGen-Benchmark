@@ -1,0 +1,5 @@
+node divide(i1,i2:int) returns (res:int);
+let
+  assert(i2<>0);
+  res = i1/i2;
+tel

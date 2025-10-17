@@ -1,0 +1,3 @@
+Defines two nodes, Even and EvensFrom. The Even node receives an integer N and returns a Boolean B. The logic of the Even node is that the current value of B is true if and only if the current value of N is even, which means the remainder of N divided by 2 is 0.
+
+The EvensFrom node receives an integer X and returns an integer E. The logic of the EvensFrom node is: if X is even, the value of E is X plus 2; if X is odd, the value of E is X plus 1. When calculating the value of E, E is also increased by the previous value of E plus 2. This means the EvensFrom node outputs a strictly increasing sequence containing all even numbers greater than X.

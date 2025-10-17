@@ -1,0 +1,22 @@
+
+node min2(x : int; y : int) returns (res : int);
+let
+    res = if x <= y then x else y;
+tel
+
+node min3(x : int; y : int; z : int) returns (res : int);
+let
+    res = min2(min2(x, y), z);
+tel
+
+node calculateMaxFruitsForCompote(a : int; b : int; c : int) returns (out : int);
+var min_portion, d, e, f: int;
+let
+    d = a / 1;
+    e = b / 2;
+    f = c / 4;
+
+    min_portion = min3(d, e, f);
+
+    out = 7 * min_portion;
+tel

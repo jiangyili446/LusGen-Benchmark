@@ -1,0 +1,6 @@
+node top (reset: bool) returns (i: int; OK: bool);
+let
+  i = 1 -> ((pre i) * (1024));
+  OK = (i >= 1);
+  --%PROPERTY OK;
+tel

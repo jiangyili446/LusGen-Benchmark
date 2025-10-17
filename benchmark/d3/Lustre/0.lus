@@ -1,0 +1,10 @@
+node calculateHipsterSockDays(a : int; b : int) returns (out1 : int; out2 : int);
+let
+    out1 = if a > b then b
+           else if b > a then a
+           else a;
+
+    out2 = if a > b then (a - b) / 2
+           else if b > a then (b - a) / 2
+           else 0;
+tel
