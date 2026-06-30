@@ -1,0 +1,5 @@
+The node top receives a boolean input reset and returns a boolean output OK. It defines an internal integer variable i.
+
+The variable i is initialized to 101. From the next instant onward, i is updated to the previous value of i modulo 2, so after the initial step i can only be 0 or 1.
+
+OK requires i to be nonnegative and also requires that, except for the initial instant, i is less than or equal to 1. At the initial instant, i is allowed to be 101. The declared property requires OK to always be true.

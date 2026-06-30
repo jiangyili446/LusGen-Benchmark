@@ -1,0 +1,3 @@
+节点STABLE接收两个输入：布尔量set和整数delay，输出一个布尔量level，并在内部使用整数变量count作为计数器。level的定义为“count是否大于0”，即只要count保持为正，level就为真，否则为假。count的更新逻辑为：当set为真时，count被立即装载为delay；当set为假且level在上一拍为真（意味着当前处于稳定保持阶段）时，count在上一拍的基础上递减1；当set为假且上一拍level为假时，count被置为0。由此可描述为：该节点实现一个“延时保持/稳定输出”功能，set触发后使输出level保持为真并持续delay个周期，随后自动回到假；若在保持期间再次触发set，则重新装载delay并重新开始保持周期。
+
+节点TIME_STABLE1接收三个输入：布尔量set、布尔量second以及整数delay，输出一个布尔量level，并在内部使用整数变量count。level同样由count是否大于0决定。count的更新逻辑为：当set为真时，count被装载为delay；当set为假时，若second为真，则在“上一拍level为真”时count递减1，否则count置为0；若second为假，则count保持不变（第一拍初始化为0，之后取上一拍count）。由此可描述为：该节点实现一个“按节拍递减的延时保持”功能，set触发后level置真并装载delay，但倒计时只在second为真的周期才会递减；在second为假的周期，当前倒计时保持不变；若set为假且second为真且此前并未处于保持状态（上一拍level为假），则计数器被清零、level保持为假。

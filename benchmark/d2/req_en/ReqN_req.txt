@@ -1,0 +1,3 @@
+The node N receives two integer inputs I and X and returns an integer output Z. If I is greater than 0, Z is I + 2. Otherwise, Z is I + X.
+
+The node ReqN receives integer inputs I, X1, and X2, and returns a boolean output P. It expresses and verifies that node N ignores its second input under a specific assumption. ReqN first constrains I to always be greater than 0, while X1 and X2 are arbitrary and may differ. Under this assumption, P requires N(I, X1) and N(I, X2) to be equal. The declared property requires P to hold whenever I is always positive.

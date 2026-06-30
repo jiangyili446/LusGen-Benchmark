@@ -1,0 +1,9 @@
+The constant N is defined as 10 and represents the upper bound of the timing or phase length after a button trigger.
+
+The node TrafficLight receives a boolean input Button and returns five boolean signals: Red, Yellow, Green, Walk, and DontWalk. These represent the red light, yellow light, green light, pedestrian-walk signal, and pedestrian-do-not-walk signal. The node maintains an integer phase Phase and its previous value prePhase. prePhase is initially 0 and then equals the previous Phase.
+
+The phase update rule is: only when Button is true and the traffic light was in the green phase one tick earlier, meaning prePhase equals 0, does the controller enter phase 1. Otherwise, if the pedestrian cycle is in progress, meaning prePhase is between 1 and N-1, the phase increases by 1. In all other cases, the phase returns to 0, representing green. This means the button is only handled when the previous phase was green, and once a pedestrian cycle starts it continues until it ends and returns to green.
+
+The light signals are determined by Phase. Green is true when Phase equals 0. Yellow is true when Phase equals 1. Red is true when Phase is greater than 1. Walk is true when Phase is greater than 2 and less than N, that is, during phases 3 through N-1. DontWalk is always the negation of Walk.
+
+The node top receives Button and calls TrafficLight to produce Red, Yellow, Green, Walk, and DontWalk. It defines CarsAllowed as Green or Yellow, meaning vehicles are allowed during green or yellow and not allowed during red. The output R1 of top is not assigned in the code, so no functional requirement for R1 is defined by this code.

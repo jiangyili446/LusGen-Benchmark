@@ -1,0 +1,1 @@
+The node test receives an integer input x and returns two integer arrays y and z of length 2, along with a boolean output P. The node assigns y to [0, 0] and z to the length-2 zero array 0^2. P is defined as y = z, meaning the two arrays are compared for equality. The declared property requires P to always hold.

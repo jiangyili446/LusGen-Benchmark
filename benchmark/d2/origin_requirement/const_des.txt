@@ -1,5 +1,0 @@
-A node s is defined, which takes a Boolean input and returns an integer X. The logic of node s is to first set X to 1, then determine based on the previous moment's X value: if the previous moment's X is less than 3, the value of X is the previous moment's X plus 1; if the previous moment's X is greater than or equal to 3, the value of X remains at 3. Therefore, the output sequence of X is 1, 2, 3, 3, 3, 3, and so on.
-
-Node s1 is a more concise version of node s, which also takes a Boolean input and returns an integer X. The logic of node s1 is to first set X to 1 and then use a predefined sequence (2, 3) to determine the output of X. By pre-calculation, the output sequence of X is also 1, 2, 3, 3, 3, 3.
-
-An observer node obs_s is defined, which takes a Boolean input and returns a Boolean value OK. The value of OK is used to determine whether the outputs of node s and node s1 are the same. If both outputs are consistent, OK is true; otherwise, OK is false. Finally, the node declares a property to ensure that the value of OK should be true in all cases.

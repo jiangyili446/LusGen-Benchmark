@@ -1,0 +1,1 @@
+A record type named my_record is defined with two fields: x of type int and y of type bool. The node top has no input and returns an output r of type my_record. The output r is assigned a fixed record value whose x field is always 1 and whose y field is always true.

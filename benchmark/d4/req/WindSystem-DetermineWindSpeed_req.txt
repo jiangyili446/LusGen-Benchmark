@@ -1,0 +1,5 @@
+节点DetermineWindSpeed接收三个实数输入windSpeedFMSSide、windSpeedRes和windSpeedMax，返回实数输出windSpeed。
+
+节点先调用WindSpeedValue(windSpeedFMSSide, windSpeedRes)得到按分辨率处理后的风速值。如果该值大于等于windSpeedMax，则windSpeed被限制为windSpeedMax；否则windSpeed等于WindSpeedValue的结果。
+
+该节点声明了一个需要验证的性质：当windSpeed大于等于windSpeedMax时，windSpeed必须等于windSpeedMax。

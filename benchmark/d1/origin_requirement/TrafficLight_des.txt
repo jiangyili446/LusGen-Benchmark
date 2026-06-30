@@ -1,7 +1,0 @@
-Defines a global constant N as 10. 
-
-Two nodes are defined: TrafficLight and top. The TrafficLight node receives a Boolean input, Button, and returns five Boolean outputs: Red, Yellow, Green, Walk, and DontWalk. Inside the node, two integer variables, Phase and prePhase, are defined. prePhase is used to record the Phase value from the previous cycle, initially set to 0. The logic for calculating Phase is as follows: if the current Button is true and prePhase is 0, then Phase is set to 1; if prePhase is between 0 and N, the Phase value is the previous cycle's Phase plus one; in other cases, the Phase value resets to 0. 
-
-Then, based on the value of Phase, the traffic light states are calculated: Green is true when Phase is 0; Yellow is true when Phase is 1; Red is true when Phase is greater than 1. For pedestrian signals, Walk is true when Phase is greater than 2 and less than N, and DontWalk is the inverse of Walk. Finally, this node is declared as the main node. 
-
-The top node receives a Boolean input, Button, and returns a Boolean output, R1. It internally calls the TrafficLight node, using Button as the input and obtaining the states of Red, Yellow, Green, Walk, and DontWalk. The CarsAllowed variable is used to indicate whether vehicles can pass when the light is green or yellow.

@@ -1,0 +1,9 @@
+The node counters receives boolean inputs a, b, and c, and returns four integer outputs x, y, nX, and nY. It implements two bounded counters and checks a constraint between them.
+
+nX is fixed to 5 and nY is fixed to 3. The node maintains previous values pre_x and pre_y, initialized to 0 and then set to the previous values of x and y.
+
+For counter x, if b or c is true, x is reset to 0. Otherwise, if a is true and pre_x is less than nX, x increments to pre_x + 1. In all other cases, x keeps pre_x.
+
+For counter y, if c is true, y is reset to 0. Otherwise, if a is true and pre_y is less than nY, y increments to pre_y + 1. In all other cases, y keeps pre_y.
+
+The node defines ok as x - y <= nX - nY. The declared property requires ok to be true at all times.

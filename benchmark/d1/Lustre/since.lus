@@ -1,0 +1,4 @@
+node Since(X: bool; Y: bool) returns (Z: bool);
+let
+  Z = X or (Y and (false -> pre(Z)));
+tel

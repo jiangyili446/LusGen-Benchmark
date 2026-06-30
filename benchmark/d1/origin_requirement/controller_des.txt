@@ -1,9 +1,0 @@
-Defined four nodes: ToInt, Max, UnchangedReal, and InitiallyHolds.
-
-The node ToInt receives a Boolean input b and returns an integer i. The calculation logic for i is: when b is true, the value of i is 1; when b is false, the value of i is 0.
-
-The node Max receives two real number inputs a and b and returns a real number z. The calculation logic for z is: if a is greater than or equal to b, then the value of z is a; otherwise, the value of z is b.
-
-The node UnchangedReal receives a real number input n and returns a Boolean value b. The calculation logic for b is: initially true, at each moment if n equals the value of n from the previous moment, then b is true; otherwise, it is false.
-
-The node InitiallyHolds receives a Boolean input X and returns a Boolean value Y. The calculation logic for Y is: initially the value of X, and true at all subsequent moments.

@@ -1,1 +1,0 @@
-Defined a node named UpCounter, which receives a Boolean input Reset and returns an integer C. The logic of C is: initially C is 0, when Reset is true, the value of C will reset to 0; when Reset is false, the value of C increases by 1 from the previous moment. Therefore, C will continue to increment until the Reset signal is activated, causing it to return to 0.

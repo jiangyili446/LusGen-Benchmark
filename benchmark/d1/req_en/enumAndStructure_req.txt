@@ -1,0 +1,3 @@
+A type alias named alias is defined and is equivalent to the integer type int. A structure type named pair is defined with two fields: a of type alias, and b of type int. An enumeration type named color is also defined with three values: blue, white, and black.
+
+The node type_decl receives two integer inputs i1 and i2 and returns an output x of type pair. The output x is constructed as a pair whose field a is i1 and whose field b is i2.

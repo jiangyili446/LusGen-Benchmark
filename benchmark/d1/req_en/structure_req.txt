@@ -1,0 +1,3 @@
+A complex type named complex is defined with two real fields: re for the real part and im for the imaginary part. A complex constant j is also defined, with real part -sqrt(3)/2 and imaginary part sqrt(3)/2.
+
+The node get_im receives an input c of type complex and returns a real output x. The output x is the imaginary part of the input complex value c.

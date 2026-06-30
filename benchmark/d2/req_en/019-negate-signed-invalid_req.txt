@@ -1,0 +1,5 @@
+The node top receives a boolean input reset and returns a boolean output OK. It defines two integer variables i and j for state evolution.
+
+j is initialized to -5. From the next instant onward, j is the negation of its previous value, so it alternates between -5 and 5.
+
+i is initialized to 100. From the next instant onward, i is the negation of the previous i plus the current j. OK is true exactly when i modulo 5 is equal to 0, meaning i is a multiple of 5. The declared property requires OK to always be true.

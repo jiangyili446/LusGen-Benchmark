@@ -1,0 +1,1 @@
+The node top receives a boolean input reset and returns a boolean output OK. It defines an integer local variable i. At the initial instant, i is 1. From the next instant onward, i is the previous value of i multiplied by 2000. OK is true when i is greater than 0. The declared property requires OK to always hold, meaning i must remain positive at all times.

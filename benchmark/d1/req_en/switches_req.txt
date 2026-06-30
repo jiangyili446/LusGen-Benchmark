@@ -1,0 +1,9 @@
+This Lustre code describes three nodes that implement a boolean switch: Switch, Switch2, and Switch3. They all model a switch with two buttons, Set and Reset. Pressing Set turns the switch on, and pressing Reset turns the switch off. If both Set and Reset are false, the switch should keep its previous state; at the initial instant, if both are false, the initial state is determined by Init.
+
+For Switch, if Set is true, X is true. Otherwise, if Reset is true, X is false. Otherwise, X keeps its state: initially it is Init, and later it is the previous X. This implementation gives Set priority when Set and Reset are both true.
+
+For Switch2, if Reset is true, X is false. Otherwise, if Set is true, X is true. Otherwise, X keeps its state: initially it is Init, and later it is the previous X. This implementation gives Reset priority when Set and Reset are both true.
+
+For Switch3, the logic is a compact expression equivalent to Switch. If Set is true, X is true. If Set is false and Reset is true, X is false. If both Set and Reset are false, X keeps its state, using Init at the initial instant and the previous X afterward. Therefore, when Set and Reset are both true, X is true.
+
+The specification allows these different priority choices because it does not prescribe what must happen when Set and Reset are true at the same time.

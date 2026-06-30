@@ -1,0 +1,7 @@
+The node RisingEdge receives a boolean input X and returns a boolean output Y. Y is true exactly when X changes from false in the previous cycle to true in the current cycle. At the initial cycle, Y is false.
+
+The node FallingEdge receives a boolean input X and returns a boolean output Y. Y is true exactly when X changes from true in the previous cycle to false in the current cycle. At the initial cycle, Y is false.
+
+The node FallingEdge2 receives a boolean input X and returns a boolean output Y. It implements the same falling-edge detection as FallingEdge by applying RisingEdge to not X.
+
+The node EdgeReq receives a boolean input X and returns a boolean output OK. It compares FallingEdge(X) and FallingEdge2(X), and OK is true when their outputs are equal. The declared property requires OK to always be true, proving that the two falling-edge implementations are equivalent for all input streams.

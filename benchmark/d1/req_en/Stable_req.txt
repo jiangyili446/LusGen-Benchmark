@@ -1,0 +1,8 @@
+The node STABLE receives a boolean input set and an integer input delay, returns a boolean output level, and uses an internal integer state variable count. The output level is true if and only if count is greater than 0.
+
+The counter count is updated with the following priority:
+1) If set is true, count is set to delay.
+2) Otherwise, if this is not the initial step and the previous value of level was true, count is decremented by 1 from the previous count.
+3) Otherwise, including the initial step when the hold phase has not been entered, count is set to 0.
+
+Overall, when set becomes true, level becomes true and enters a hold state. If set is no longer true, level continues to hold while count counts down. When the countdown ends, level becomes false. If set is false at the initial instant, count is 0 and level is false.

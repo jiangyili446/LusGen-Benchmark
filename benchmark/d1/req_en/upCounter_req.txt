@@ -1,0 +1,1 @@
+The node UpCounter receives a boolean input Reset and returns an integer output C representing the current counter value. The counter initializes C to 0 at the first instant. On each later instant, if Reset is true, C is reset to 0; otherwise, C is the previous value of C plus 1. Thus, C increases by 1 each cycle until Reset causes it to return to 0.

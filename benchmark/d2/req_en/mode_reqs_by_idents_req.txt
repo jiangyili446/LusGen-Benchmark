@@ -1,0 +1,5 @@
+The node abs receives an integer input in and returns an integer output out. If in is less than 0, out is -in; otherwise, out is in. A property states that out should always be nonnegative.
+
+The node has_been_true receives a boolean input in and returns a boolean output out. out indicates whether in has ever been true up to the current instant. If current in is true, out is true; otherwise, out keeps its previous value, with false used initially.
+
+The node my_node receives an integer input in and returns an integer output out. It contains an internal state mem that accumulates the historical sum of abs(in), initialized with previous mem equal to 0. If in is negative, out is directly in. If in is nonnegative, out is mem. The declared property requires out - in >= 0 at all times.

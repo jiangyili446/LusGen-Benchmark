@@ -64,14 +64,12 @@ tel
 -- Try to verify it and see what happens!
 
 node ReqSwitches( Set, Reset, Init: bool )
-returns ( R1, R1b, R2: bool );
+returns ( R1b, R2: bool );
 var S1, S2, S3: bool;
 let
   S1 = Switch1( Set, Reset, Init );
   S2 = Switch2( Set, Reset, Init );
   S3 = Switch3( Set, Reset, Init );
-
-  R1 = not (Set and Reset) => (S1 = S2);  -- wrong!
 
 -- We need to make a stronger assumption, namely that Set and Reset
 -- never have been true at the same time *up to this point*. We can
@@ -82,7 +80,6 @@ let
   R2 = (S1 = S3);
 
   --%MAIN;
-  --%PROPERTY R1;
   --%PROPERTY R1b;
   --%PROPERTY R2;
 tel

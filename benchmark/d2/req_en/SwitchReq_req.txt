@@ -1,0 +1,14 @@
+This Lustre code describes a boolean switch system and its safety-requirement monitor. It includes the nodes Switch, First, Sofar, Since, and SwitchReq.
+
+Switch receives boolean inputs Set, Reset, and Init and returns state X. If Set is true, X is true. Otherwise, if Reset is true, X is false. Otherwise, X keeps its state, using Init at the initial instant and the previous X afterward.
+
+First outputs the initial value of its boolean input and then keeps it forever. Sofar indicates whether a boolean condition has been true from the beginning through the current instant. Since indicates that X has occurred and Y has held continuously since that occurrence.
+
+SwitchReq receives Set, Reset, Reset2, and Init, calls Switch, and returns R1 through R7. Each Ri is declared as a property:
+R1: if Set is true, X must be true.
+R2: if Set is false and Reset is true, X must be false.
+R3: from the second instant onward, if both Set and Reset are false, X must equal its previous value.
+R4: when Set is true, Reset is ignored; Switch driven by Reset and Switch driven by arbitrary Reset2 must produce the same output.
+R5: if Reset has remained false since some Set, X must be true.
+R6: if an effective reset occurred while Set was false and Set has remained false since then, X must be false.
+R7: if Set and Reset have both always been false from the beginning, X must remain equal to the initial value of Init.

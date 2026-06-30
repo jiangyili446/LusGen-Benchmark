@@ -1,0 +1,1 @@
+The node First receives an integer input stream X and returns an integer output stream Y. At the first instant, Y is equal to the first value of X. From the second instant onward, Y keeps its own previous value and no longer changes. Therefore, Y is a constant stream equal to the initial value of X.

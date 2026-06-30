@@ -1,0 +1,9 @@
+节点WindSpeedValue接收两个实数输入value和resolution，返回实数输出result，并在内部定义实数变量num1和num2。
+
+num1表示value/resolution的绝对值：如果value/resolution大于等于0.0，则num1等于value/resolution；否则num1等于-(value/resolution)。
+
+num2等于real(int(num1+0.5))*resolution，也就是先对num1加0.5后取整数部分，再转回实数并乘以resolution。
+
+result根据num2的符号取值：如果num2大于等于0.0，则result等于num2；否则result等于-num2。
+
+该节点声明了一个需要验证的性质：当num1小于0.0时，num2必须等于-num1。

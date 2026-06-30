@@ -1,0 +1,6 @@
+type my_record = { x: int; y: bool };
+
+node top() returns (r: my_record);
+let
+  r = my_record { x = 1; y = true };
+tel

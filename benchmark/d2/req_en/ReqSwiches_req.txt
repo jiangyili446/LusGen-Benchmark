@@ -1,0 +1,11 @@
+This Lustre code defines three boolean switch implementations and two auxiliary temporal operators, and gives equivalence requirements in a requirement node.
+
+Switch1 receives boolean inputs Set, Reset, and Init and returns boolean X. If Set is true, X is true. Otherwise, if Reset is true, X is false. Otherwise, X keeps its historical state, using Init at the initial instant and the previous X afterward. When Set and Reset are both true, this implementation gives Set priority.
+
+Switch2 receives the same inputs and returns X. If Reset is true, X is false. Otherwise, if Set is true, X is true. Otherwise, X keeps its historical state. When Set and Reset are both true, this implementation gives Reset priority.
+
+Switch3 receives Set, Reset, and Init and returns X. If Set is true, X is true. Otherwise, only when Reset is false does X continue through the memory term, using Init at the initial instant and the previous X afterward. This is equivalent to a Set-priority switch.
+
+Sofar receives a boolean input X and returns Y, which means X has been true from the beginning through the current instant. Since receives boolean inputs X and Y and returns SinceXY, which becomes true when X is true and remains true while Y is true.
+
+ReqSwitches receives Set, Reset, and Init, computes S1, S2, and S3 from Switch1, Switch2, and Switch3, and outputs the boolean requirement indicators R1, R1b, and R2 according to the Chinese requirement. R1b states that if Set and Reset have never been true at the same time up to the current instant, then Switch1 and Switch2 must currently agree. R2 states that Switch1 and Switch3 must have the same external behavior in all cases. The Chinese requirement says the node is the main node and declares R1, R1b, and R2 as properties.

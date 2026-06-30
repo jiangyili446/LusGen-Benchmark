@@ -1,0 +1,4 @@
+node SinceIncl(X: bool; Y: bool) returns (Z: bool);
+let
+  Z = Y and (X or not (false -> pre(Z)));
+tel

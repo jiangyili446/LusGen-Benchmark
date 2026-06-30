@@ -1,0 +1,8 @@
+type complex = { re :real ; im :real };
+
+const j =complex { re =-sqrt(3)/2;im = sqrt(3)/2 }; --a complex constant
+
+node get_im(c:complex)returns(x:real);
+let
+    x =c.im;
+tel

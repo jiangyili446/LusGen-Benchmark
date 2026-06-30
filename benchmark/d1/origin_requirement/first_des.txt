@@ -1,1 +1,0 @@
-Define a node First that receives an integer input X and returns an integer Y. The logic for calculating Y is: Y's value always remains the current input X, while at the next moment it adopts the previous moment's Y value. In this way, Y forms a constant stream, with its value always being the initial value of X.

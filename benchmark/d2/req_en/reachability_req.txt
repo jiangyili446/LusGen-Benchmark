@@ -1,0 +1,7 @@
+The node counter receives an integer input test and returns an integer output out. It implements an increasing counter starting from 0. At the initial instant, out is 0. From the next instant onward, out is the previous out plus 1. The input test is not used.
+
+The node declares several reachability properties for out:
+1) out must be reachable at value 6 within 7 instants.
+2) starting from instant 10, out must be reachable at value 15 within 20 instants.
+3) starting from instant 3, out must be reachable at value 3.
+4) at instant 15, out must be reachable at value 15.

@@ -1,0 +1,9 @@
+The node SwitchInt receives a boolean input Set and an integer input X, and returns an integer output Y. If Set is true, Y immediately takes the current X. If Set is false, Y keeps its previous output value, using 0 initially. Therefore, it is an integer holder controlled by Set.
+
+Sofar expresses that a boolean condition has held from the beginning until now. First returns a constant stream equal to the initial value of its integer input. Since expresses that after some occurrence of X, condition Y has continuously held. SinceIncl is an inclusive variant requiring the current Y condition to hold as well.
+
+ReqSwitchIgnoresX receives Set and two integer inputs X1 and X2, and returns P. It defines Env as the assumption that up to now, whenever Set is true, X1 equals X2. Under Env, P requires SwitchInt(Set, X1) and SwitchInt(Set, X2) to produce the same output. This means SwitchInt should ignore the integer input when Set is false, and only stored values matter.
+
+ReqSwitchIntSimple receives Set and X and returns P and Q. It lets Y be SwitchInt(Set, X). Property P states that if, since the last time Set was true with X equal to 3, Set has remained false, then Y must be 3. Property Q uses SinceIncl for that condition and states that the condition implies false, expressing that this formulation leads to an unsatisfiable or contradictory condition.
+
+ReqSwitchInt receives Set, X, and A and returns P. It uses First(A) to create a constant stream a equal to the initial value of A. It requires that if, since the last time Set was true and X equaled a, Set has remained false, then Y must equal a. This generalizes the constant-3 case and states that SwitchInt keeps the last value loaded when Set was true.

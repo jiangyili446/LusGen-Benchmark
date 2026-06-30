@@ -1,9 +1,0 @@
-Three nodes are defined, namely Switch, Switch2, and Switch3, each implementing the function of a Boolean switch, influenced by two buttons (Set and Reset) and an initialization signal (Init).
-
-The logic for the Switch node is: when Set is pressed, the switch X is turned on; if Reset is pressed, the switch X is turned off; if neither is pressed, the state of X depends on the Init signal and the previous state value. When both are pressed, the state of Set is prioritized.
-
-The logic for the Switch2 node is similar to Switch but with opposite priorities. When Reset is pressed, the switch X is turned off; if Set is pressed, X is turned on; if neither is pressed, it similarly depends on the Init signal and the previous state value. When both are pressed, the state of Reset is prioritized.
-
-The Switch3 node provides a more concise implementation of Switch. Its logic is: if Set is pressed, X is turned on; if Reset is not pressed and the Init signal is true, X's state depends on the previous state. In this implementation, pressing Reset directly impacts the off state of X.
-
-All three implementations conform to the specification because the specification does not mandate what action should be taken when Set and Reset are pressed simultaneously.

@@ -1,0 +1,7 @@
+The node ToInt receives a boolean input b and returns an integer output i. When b is true, i is 1; when b is false, i is 0. This implements a boolean-to-integer conversion.
+
+The node Max receives two real inputs a and b and returns a real output z. The output z is always the larger of a and b. If a is greater than or equal to b, z is a; otherwise, z is b.
+
+The node UnchangedReal receives a real input n and returns a boolean output b. At the initial instant, b is true. From the second instant onward, b is true if and only if the current value of n is equal to the previous value of n; otherwise, b is false. It is used to check whether signal n remains unchanged from the previous tick.
+
+The node InitiallyHolds receives a boolean input X and returns a boolean output Y. At the initial instant, Y equals X. From the second instant onward, Y is always true and is no longer affected by X. This expresses the behavior that a condition is checked at the initial instant and then the output remains true.

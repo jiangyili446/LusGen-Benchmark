@@ -1,0 +1,7 @@
+节点RisingEdge接收一个布尔输入X，并返回一个布尔输出Y。其需求是：当且仅当输入X在当前周期从上一周期的false变为true（即出现上升沿）时，输出Y为true；在初始周期输出Y为false。
+
+节点FallingEdge接收一个布尔输入X，并返回一个布尔输出Y。其需求是：当且仅当输入X在当前周期从上一周期的true变为false（即出现下降沿）时，输出Y为true；在初始周期输出Y为false。
+
+节点FallingEdge2接收一个布尔输入X，并返回一个布尔输出Y。其需求是：该节点实现与FallingEdge相同的下降沿检测功能，但实现方式是对输入X取反后复用RisingEdge的上升沿检测；因此当X从上一周期的true变为false时输出Y为true，否则为false。
+
+节点EdgeReq接收一个布尔输入X，并返回一个布尔输出OK。其需求是：同步比较两种下降沿检测实现（FallingEdge与FallingEdge2）的输出是否一致；OK表示二者在每个周期的输出相等。并声明验证性质：要求对所有时间步OK恒为true，即两种实现对任意输入序列始终等价。该节点被标记为主验证入口（MAIN），并使用性质“PROPERTY OK”进行形式化证明。

@@ -1,0 +1,5 @@
+An enumeration type t is defined with three values: A, B, and C. The node n receives four inputs x, y, z, and w of type t, and returns a boolean output ok.
+
+ok is true if and only if x is equal to A, B, or C, which states that x is a valid member of the enumeration.
+
+The node declares two properties. The first requires ok to always be true. The second requires at least one pair among x, y, z, and w to be equal: x equals y, z, or w, or y equals z or w, or z equals w.

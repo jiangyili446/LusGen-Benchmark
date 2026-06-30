@@ -1,0 +1,1 @@
+The node Fibonacci receives a boolean input, which is not used by the logic, and returns an integer output Fib. Fib represents a Fibonacci sequence generated over discrete clock cycles. At the first cycle, Fib is 1. At the second cycle, Fib is also 1. From the third cycle onward, Fib is the sum of the previous Fib and the Fib value two cycles earlier.

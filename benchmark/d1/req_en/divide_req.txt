@@ -1,0 +1,1 @@
+The node divide receives two integer inputs i1 and i2 and returns an integer result res. Before performing the calculation, the node constrains i2 to be nonzero. Under this assumption, res is the integer division result i1 / i2.

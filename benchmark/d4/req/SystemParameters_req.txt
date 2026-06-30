@@ -1,0 +1,10 @@
+节点SystemParameters不接收任何输入，返回五个实数输出：windDirectionRes、windSpeedRes、windSpeedMax、windSpeedMin和windSpeedUpperHyst。
+
+各输出的取值为：
+1) windDirectionRes恒等于1.0。
+2) windSpeedRes恒等于1.0。
+3) windSpeedMax恒等于255.0。
+4) windSpeedMin恒等于5.0。
+5) windSpeedUpperHyst恒等于7.0。
+
+该节点声明了两个需要验证的性质：windSpeedRes必须大于0.0；windSpeedMax必须大于windSpeedMin。

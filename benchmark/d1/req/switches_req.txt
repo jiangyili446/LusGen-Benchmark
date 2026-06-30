@@ -1,0 +1,29 @@
+该Lustre代码描述了三个用于实现布尔开关（Switch）的节点：Switch、Switch2和Switch3。它们都建模了一个带两个按钮的开关系统：Set和Reset。按下Set会把开关置为开（true），按下Reset会把开关置为关（false）。当Set和Reset在某一时刻都未按下时，开关应保持其上一时刻的状态；但在系统初始时刻（第一次计算时），如果Set和Reset都未按下，则开关的初始状态由第三个输入信号Init决定。
+
+1) 节点Switch的需求描述  
+- 节点Switch接收三个布尔输入：Set、Reset和Init，输出一个布尔值X表示开关当前状态。  
+- 状态更新规则如下：  
+  - 如果Set为true，则无条件将X置为true（开）。  
+  - 否则如果Reset为true，则将X置为false（关）。  
+  - 否则（Set和Reset都为false），X保持不变：初始时刻X取Init；非初始时刻X取上一时刻的X。  
+- 该实现体现的优先级策略是：当Set与Reset同时为true时，优先响应Set，使X为true。
+
+2) 节点Switch2的需求描述  
+- 节点Switch2同样接收Set、Reset和Init三个布尔输入，输出布尔值X表示开关状态。  
+- 状态更新规则如下：  
+  - 如果Reset为true，则无条件将X置为false（关）。  
+  - 否则如果Set为true，则将X置为true（开）。  
+  - 否则（Set和Reset都为false），X保持不变：初始时刻X取Init；非初始时刻X取上一时刻的X。  
+- 该实现体现的优先级策略是：当Set与Reset同时为true时，优先响应Reset，使X为false。
+
+3) 节点Switch3的需求描述  
+- 节点Switch3接收Set、Reset和Init三个布尔输入，输出布尔值X表示开关状态。  
+- 它以更紧凑的逻辑表达与Switch等价的行为：  
+  - 当Set为true时，X为true（开）。  
+  - 当Set为false且Reset为true时，X为false（关）。  
+  - 当Set和Reset都为false时，X保持不变：初始时刻X取Init；非初始时刻X取上一时刻的X。  
+- 因为其逻辑等价于“Set优先于Reset”的形式，所以当Set与Reset同时为true时，X为true。
+
+补充需求说明（关于规格允许性）  
+- 这三个实现都满足同一类开关规格：Set使其开、Reset使其关、两者都不按时保持状态、初始由Init决定。  
+- 由于该规格没有规定“Set与Reset同时为true时必须如何处理”，因此允许不同实现选择不同优先级策略：Switch与Switch3选择Set优先，Switch2选择Reset优先。

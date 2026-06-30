@@ -1,0 +1,47 @@
+该Lustre代码描述了一个布尔开关系统及其安全性需求监视器，包含多个节点：Switch、First、Sofar、Since、SwitchReq。
+
+1）节点Switch（开关功能）
+定义了一个带三个布尔输入信号Set、Reset、Init的开关，输出为布尔状态X。
+- 当Set为true时，开关状态X被置为true（开）。
+- 否则当Reset为true时，开关状态X被置为false（关）。
+- 否则（Set和Reset都为false时），开关状态保持不变：初始时刻X取Init；从第二拍开始X等于上一拍的X。
+
+2）节点First（取初值算子）
+定义了一个布尔输入X和输出Y，用于输出“输入X在初始时刻的值并一直保持”：
+- 初始时刻Y等于X的初始值；
+- 后续时刻Y保持不变，始终等于上一拍的Y。
+
+3）节点Sofar（从开始到当前始终成立算子）
+定义了一个布尔输入X和输出Y，用于表示“X从系统开始到当前时刻是否一直为真”：
+- 初始时刻Y等于X；
+- 后续时刻Y等于X且上一拍Y为真（即一直连续为真才为真）。
+
+4）节点Since（自某次触发以来持续成立算子）
+定义了两个布尔输入X、Y和输出Z，用于表示“曾经发生过X，并且从那次发生之后Y一直为真”：
+- 如果当前X为真，则Z为真（表示触发点发生了）；
+- 否则当Y为真且上一拍Z为真时，Z保持为真；
+- 初始时刻用false初始化历史递推，保证时序定义一致。
+
+5）节点SwitchReq（开关需求监视器与性质）
+该节点接收Set、Reset、Reset2、Init四个布尔输入，内部调用Switch得到开关状态X，并输出7个布尔需求判定R1~R7。每个Ri都被声明为需要满足的性质（PROPERTY），表示对应安全需求在所有时刻都应为真。
+
+需求R1：设置必然打开
+当Set为true时，要求开关输出X必须为true。
+
+需求R2：仅复位时必然关闭
+当Set为false且Reset为true时，要求开关输出X必须为false。
+
+需求R3：不操作时状态保持
+从第二个时刻开始，若Set和Reset都为false，则要求X与上一拍的X相等（状态保持不变）。初始时刻该需求不做约束（用true跳过首拍）。
+
+需求R4：Set为真时忽略Reset
+当Set为true时，要求开关行为不受Reset影响：用Reset与用任意另一个Reset2驱动Switch，得到的输出必须完全相同。也就是说，只要Set为真，Reset取值如何都不会改变开关输出。
+
+需求R5：开状态在下一次复位前保持
+若“自某次Set为真以来，Reset一直为false”（由Since(Set, not Reset)表达），则要求开关输出X必须为true。即一旦被Set打开，在出现下一次Reset之前应一直保持打开。
+
+需求R6：关状态在下一次设置前保持（考虑Set优先级）
+若“发生过一次Reset且当时Set为false，并且从那之后Set一直为false”（由Since(Reset and not Set, not Set)表达），则要求开关输出X必须为false。即当有效复位发生后，只要之后没有Set，开关应保持关闭；同时强调当Set为true时Reset无效，因此复位触发条件必须带not Set。
+
+需求R7：从不按键则保持初始位置
+如果从系统开始到当前时刻，Set和Reset一直都为false（由Sofar(not Set and not Reset)表达），则要求开关输出X始终等于Init的初始值（由First(Init)提供）。即若始终没有任何操作，开关状态应一直保持在由Init决定的初始状态。

@@ -1,0 +1,5 @@
+节点AngularSubtract接收两个实数输入min和sub，返回实数输出diff，用于计算两个角度量之间的差值。
+
+节点首先计算min-sub的符号，并用min-sub或sub-min得到该差值的绝对值形式。如果该绝对值小于等于180.0，则diff等于min-sub。否则，如果min-sub大于0.0，则diff等于min-sub-0.0，也就是保持为min-sub；如果min-sub不大于0.0，则diff等于min-sub+360.0。
+
+该节点声明了一个需要验证的性质：当min-sub小于-180.0时，diff必须等于min-sub+360.0。

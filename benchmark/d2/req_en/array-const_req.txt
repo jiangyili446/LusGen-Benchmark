@@ -1,0 +1,5 @@
+Three constant arrays are defined. simple_array_literal is an integer array of length 3 with values [1, 5, 9]. simple_array_constr is an integer array of length 3 initialized with 0^3, so all three elements are 0. nested_array is a 2-by-2 nested integer array whose first row contains two zeros and whose second row contains two ones.
+
+The function look_up_table receives an integer input i and returns an integer output v. It divides i by 10 and uses the result as an index into simple_array_literal. Thus, when i is between 0 and 9 the output is 1, when i is between 10 and 19 the output is 5, and when i is between 20 and 29 the output is 9.
+
+The function declares a property: under the assumption 0 <= i and i < 30, v must be one of 1, 5, or 9.

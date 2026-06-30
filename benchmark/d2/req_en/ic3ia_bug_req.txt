@@ -1,0 +1,1 @@
+The node N receives no input and returns a boolean output ok. It contains an assertion requiring that, from the second cycle onward, the previous value of ok must be true. At the first cycle, the assertion is true by initialization. The node assigns ok to false at all times. It also declares the property that not ok must always hold.

@@ -1,0 +1,39 @@
+该Lustre代码定义了三个布尔开关的实现以及两个辅助时序算子，并在一个需求节点中给出了需要验证的等价性/一致性要求。
+
+1) 节点Switch1的需求描述  
+节点Switch1接收三个布尔输入Set、Reset和Init，输出布尔量X表示开关状态。其行为需求为：  
+- 当Set为true时，开关状态X必须为true（开）。  
+- 否则当Reset为true时，开关状态X必须为false（关）。  
+- 否则（Set和Reset都为false时），X保持其历史状态：初始时刻X取Init的值；从第二个时刻开始X等于上一时刻的X。  
+- 当Set与Reset同时为true时，该实现要求“Set优先”，即X为true。
+
+2) 节点Switch2的需求描述  
+节点Switch2同样接收Set、Reset和Init，输出开关状态X。其行为需求为：  
+- 当Reset为true时，开关状态X必须为false（关）。  
+- 否则当Set为true时，开关状态X必须为true（开）。  
+- 否则（Set和Reset都为false时），X保持其历史状态：初始时刻X取Init的值；从第二个时刻开始X等于上一时刻的X。  
+- 当Set与Reset同时为true时，该实现要求“Reset优先”，即X为false。
+
+3) 节点Switch3的需求描述  
+节点Switch3接收Set、Reset和Init，输出开关状态X。其行为需求为：  
+- 若Set为true，则X为true。  
+- 否则，只有在Reset为false且需要保持记忆状态时，X才延续历史：初始时刻X取Init的值；从第二个时刻开始X等于上一时刻的X。  
+- 该实现等价于一种“Set优先”的开关：Reset为true会在Set不为true时使得X不能通过保持项维持为true，从而表现为关闭/不保持。
+
+4) 节点Sofar的需求描述  
+节点Sofar接收布尔输入X，输出布尔量Y，表示“截至当前时刻为止，X是否一直为真”。需求为：  
+- 初始时刻Y等于X。  
+- 后续时刻Y等于“当前X为真”且“上一时刻Y为真”；因此只要历史上任何一次X为false，从该时刻起Y将一直为false。
+
+5) 节点Since的需求描述  
+节点Since接收布尔输入X和Y，输出SinceXY，表示一种“自某个时刻开始，在Y持续为真的期间，X是否曾经为真/或当前为真”的累积关系。需求为：  
+- 如果当前X为true，则SinceXY为true。  
+- 否则，如果当前Y为true且上一时刻SinceXY为true，则SinceXY保持为true。  
+- 初始时刻在“需要引用上一时刻SinceXY”的分支中，上一时刻值按false处理。
+
+6) 节点ReqSwitches的需求描述与待验证性质  
+节点ReqSwitches接收Set、Reset、Init，内部计算三个实现的输出S1、S2、S3，并输出三个布尔需求判定量R1、R1b、R2，用于表达并验证如下性质：
+- R1b（加强后的正确前提形式）：若从系统开始到当前时刻为止，Set与Reset从未在同一时刻同时为true，则要求Switch1与Switch2在当前时刻输出一致（S1 = S2）。
+- R2：在所有输入情况下，要求Switch1与Switch3的外部输出行为完全一致，即任意时刻都有S1 = S3。  
+
+同时，该节点声明为主节点，并将R1、R1b、R2作为需要形式化验证的性质。

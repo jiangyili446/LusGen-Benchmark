@@ -1,1 +1,0 @@
-Defines a node called divide, which accepts two integer inputs, i1 and i2, and returns an integer res. Inside the node, an assertion first checks whether i2 is not equal to zero to ensure there is no division by zero during the division operation. If the assertion passes, the result of i1 divided by i2 is assigned to res.

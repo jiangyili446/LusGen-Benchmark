@@ -1,0 +1,5 @@
+The node integr receives an integer input x and returns an integer output c. It also defines an integer local variable three.
+
+three is constantly assigned the value 3. The output c does not depend on x. Instead, it follows a fixed sequence: c is 1 at the initial instant, 2 at the second instant, and 3 from the third instant onward.
+
+The node declares a property requiring c to never be equal to 2.

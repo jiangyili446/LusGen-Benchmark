@@ -1,0 +1,5 @@
+Directory,Files_Processed,Success_Count,Failure_Count,Standard_Avg_Success,Actual_Avg_Success
+d1\Lustre,24,0,0,0.0,0.0
+d2\Lustre,25,55,1,0.7142857142857143,2.2
+d3\Lustre,5,0,0,0.0,0.0
+d4\Lustre,8,6,0,0.07792207792207792,0.75

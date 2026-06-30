@@ -1,1 +1,0 @@
-An enumeration type my_enum is defined, consisting of three values: A, B, and C. The top node receives an input x of type my_enum and returns an output y of type my_enum. The internal logic of the node is very simple; the value of y is directly equal to the input x.

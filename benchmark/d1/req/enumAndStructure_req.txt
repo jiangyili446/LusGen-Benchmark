@@ -1,0 +1,3 @@
+定义了一个类型别名alias，其等价于整数类型int。定义了一个结构体类型pair，包含两个字段：a（类型为alias，即int）和b（类型为int）。同时定义了一个枚举类型color，包含三种取值：blue、white和black。
+
+节点type_decl接收两个整数输入i1和i2，输出一个pair类型的结构体x。x的赋值逻辑为：将x构造为一个pair结构体，其中字段a取输入i1，字段b取输入i2。

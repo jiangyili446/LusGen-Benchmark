@@ -1,0 +1,20 @@
+The node TrafficLight implements a simple traffic-light controller. Its input Button indicates whether the pedestrian button is pressed. It outputs Red, Yellow, Green, Walk, and DontWalk. The internal integer Phase represents the current phase, and prePhase stores the previous Phase, initially 0. Initially Phase is 0. When Button is true, Phase is set to 1; otherwise, if the previous phase is between 1 and 9, Phase increments by 1; otherwise, Phase returns to 0. Green is true when Phase = 0, Yellow when Phase = 1, and Red when Phase > 1. Walk is true when Phase is between 3 and 9, and DontWalk is not Walk.
+
+The node ReqTrafficLight is a synchronous observer for safety properties of TrafficLight. It calls TrafficLight and defines CarsAllowed as Green or Yellow. It outputs R1 through R15:
+1) R1: if cars are allowed, Walk must be false.
+2) R2: Red and Green must not both be true.
+3) R3: at least one of Red, Yellow, and Green must be true.
+4) R4: if Walk is true, Red must be true.
+5) R5: Walk and DontWalk must be exclusive and one of them must be true.
+6) R6: from the second tick onward, Red must not immediately follow Green.
+7) R7: from the second tick onward, if cars were allowed on the previous tick, Walk must be false now.
+8) R8: from the second tick onward, if Walk was true on the previous tick, cars must not be allowed now.
+9) R9: from the second tick onward, Yellow must not be true for two consecutive ticks.
+10) R10: from the second tick onward, if Red was true and then becomes false, Green must be true.
+11) R11: if Button has never been pressed up to the current tick, Green must be true.
+12) R12: if Walk is true, Red must be true.
+13) R13: from the second tick onward, Yellow can only follow Green.
+14) R14: Red may be true for at most 9 consecutive ticks.
+15) R15: from the second tick onward, when Red turns on, Walk must be false now and must also have been false on the previous tick.
+
+Sofar expresses that a condition has always held from the initial instant to the current instant. Count counts how many consecutive ticks a boolean condition has been true.

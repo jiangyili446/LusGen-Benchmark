@@ -1,0 +1,5 @@
+The node top receives a boolean input reset and returns an integer output i and a boolean output OK.
+
+i is initialized to 1. From the next instant onward, i is the previous value of i multiplied by 1024. The reset input is not used and has no effect on either i or OK.
+
+OK is true if and only if i is greater than or equal to 1. The declared property requires OK to hold at all times.

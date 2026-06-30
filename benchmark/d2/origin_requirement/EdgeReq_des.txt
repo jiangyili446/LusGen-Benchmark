@@ -1,7 +1,0 @@
-Four nodes are defined for handling edge detection of input streams. The RisingEdge node receives a boolean input X and returns a boolean output Y. When the input X changes from false to true, Y becomes true, indicating a rising edge. Specifically, Y is initially false and becomes true at the current moment if and only if the current input X is true and the previous input was not true.
-
-The FallingEdge node also receives a boolean input X and returns a boolean output Y. When the input X changes from true to false, Y becomes true, indicating a falling edge. The logic is that Y becomes true at the current moment if and only if the current input X is false and the previous input was true.
-
-The FallingEdge2 node behaves in the same way as FallingEdge but is implemented differently using the previously defined RisingEdge node. Specifically, FallingEdge2 detects falling edges by inverting the input X and then calling RisingEdge.
-
-Finally, the EdgeReq node is used for synchronous observation to check whether the implementations of FallingEdge and FallingEdge2 are equivalent. Its logic involves comparing the outputs of the two falling edge implementations to obtain a boolean OK value, indicating whether these two implementations are consistent. Furthermore, an attribute is declared in this node to ensure that this comparison should hold in all cases.

@@ -1,0 +1,5 @@
+The node fact receives a boolean input, which is not used in the computation, and returns an integer output F. It also defines an internal integer variable N.
+
+The node generates the natural-number sequence N recursively: at the initial instant, N is 0; from the next instant onward, N increases by 1 at each cycle.
+
+The output F is used to generate a factorial sequence corresponding to N. At the initial instant, F is 1, corresponding to 0! = 1. From the next instant onward, F is computed by the recurrence "current N multiplied by the previous N", so that the requirement states F = N! at each cycle.

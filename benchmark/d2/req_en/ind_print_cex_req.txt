@@ -1,0 +1,7 @@
+The node bla receives a real input in and returns a real output out. It defines a real temporary variable tmp to store historical input values.
+
+tmp stores the previous value of in: at the initial instant, tmp is the current in; from the second instant onward, tmp is the previous in.
+
+out outputs in delayed by two ticks: at the initial instant, out is the current in; from the second instant onward, out is the previous tmp, which corresponds to the value of in two ticks earlier.
+
+The declared property requires out to always equal the expression (in -> pre (in -> pre in)), meaning out must exactly match a two-step delayed version of input in with current-value initialization.

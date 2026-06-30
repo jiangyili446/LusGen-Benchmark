@@ -1,0 +1,1 @@
+An abstract type named foo is defined. The function bar receives an input x of type foo and returns an output y of type foo. The behavior of bar is to assign x directly to y, so y is always identical to x and no conversion or modification is performed.

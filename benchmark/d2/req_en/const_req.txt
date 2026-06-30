@@ -1,0 +1,5 @@
+The node s receives a boolean input that is ignored and returns an integer output X. X is initialized to 1. From the second instant onward, if the previous X is less than 3, X increases by 1; otherwise, X remains 3. Therefore, the output sequence is 1, 2, 3, 3, 3, and so on.
+
+The node s1 also receives an ignored boolean input and returns an integer output X. It compactly expresses the same sequence: 1, 2, 3, 3, 3, and so on.
+
+The observer node obs_s receives an ignored boolean input and returns a boolean output OK. OK compares the outputs of s and s1 at each instant. The node is marked as the main entry and declares a property requiring OK to always be true, meaning s and s1 must produce identical outputs at all times.

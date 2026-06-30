@@ -1,0 +1,3 @@
+节点DownCounter接收两个输入：整数Time和布尔量Restart，输出一个整数计数值Ctr，用于实现一个可重启的倒计时计数器。其行为要求如下：在第一个计算周期，Ctr初始化为Time；从第二个周期开始，如果Restart为真，则Ctr在该周期被立即重置为Time；如果Restart为假且上一周期的Ctr大于0，则Ctr在当前周期等于上一周期的Ctr减1，实现每周期递减1的倒计时；如果Restart为假且上一周期的Ctr小于等于0，则Ctr保持不变（继续等于上一周期的Ctr），不再继续递减。
+
+节点DownCounters接收三个输入：两个整数Time1、Time2以及布尔量Restart，输出两个整数Ctr1和Ctr2。该节点包含两个相互独立的倒计时计数器实例：Ctr1由调用DownCounter(Time1, Restart)得到，Ctr2由调用DownCounter(Time2, Restart)得到。要求Ctr1完全遵循以Time1为初始/重置值的DownCounter行为，Ctr2完全遵循以Time2为初始/重置值的DownCounter行为；两路计数器彼此独立，分别维护各自的历史状态（各自的上一周期Ctr值），但共享同一个Restart信号用于同步重启。

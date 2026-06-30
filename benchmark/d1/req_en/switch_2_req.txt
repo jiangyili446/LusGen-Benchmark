@@ -1,0 +1,7 @@
+The node Switch models a boolean switch with two buttons, Set and Reset, and an additional initialization input Init. It receives three boolean inputs Set, Reset, and Init, and returns a boolean output X representing the current switch state.
+
+The update rules are:
+1) If Set is true, the switch is turned on and X is true.
+2) Otherwise, if Reset is true, the switch is turned off and X is false.
+3) Otherwise, if both Set and Reset are false, the switch keeps its previous state; from the second instant onward, X equals the previous X.
+4) At the initial instant, if both Set and Reset are false, the initial position is determined by Init, so X equals Init.

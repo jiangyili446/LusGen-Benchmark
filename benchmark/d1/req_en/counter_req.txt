@@ -1,0 +1,8 @@
+The node COUNTER implements an integer counter with initialization, enabled incrementing, and reset. It receives two integer inputs init and incr, and two boolean inputs X and reset, and returns the current counter value N.
+
+The internal variable PN represents the previous counter value. At the first instant, PN is init. From the second instant onward, PN is the previous value of N.
+
+The output N is updated as follows:
+1) If reset is true, the counter is reset and N is init, regardless of the other inputs.
+2) If reset is false and X is true, the counter increments, and N is PN plus incr.
+3) If reset is false and X is false, the counter holds its value, and N is PN.

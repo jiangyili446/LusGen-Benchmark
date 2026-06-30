@@ -1,0 +1,9 @@
+常量N被定义为10，用于表示交通灯在一次按键触发后的计时/相位长度上限。
+
+节点TrafficLight接收一个布尔输入Button（表示行人按钮是否被按下），输出五个布尔信号Red、Yellow、Green、Walk、DontWalk，分别表示红灯、黄灯、绿灯、允许行走与禁止行走状态。该节点内部维护一个整型相位Phase以及其上一拍的值prePhase，其中prePhase初始为0，之后每个周期等于上一周期的Phase。
+
+TrafficLight的相位更新逻辑要求：只有当按钮Button为真且在一拍之前交通灯处于绿灯相位（即prePhase等于0）时，才从绿灯相位切换进入相位1；否则，如果当前处于一次行人周期的进行过程中（即prePhase在1到N-1之间），则相位每拍递增1（Phase = prePhase + 1）；当不满足上述两类条件时，相位回到0（表示回到绿灯相位）。这体现了“仅在上一拍为绿灯时才响应按钮”的需求，并且在进入行人周期后会持续计数直到结束，结束后回到绿灯。
+
+TrafficLight的灯色与行人信号由相位决定：当Phase等于0时Green为真；当Phase等于1时Yellow为真；当Phase大于1时Red为真。行人允许通行Walk在Phase大于2且小于N时为真（即相位3到N-1期间允许行走）；DontWalk恒等于Walk的取反，确保任意时刻行人信号“允许通行”和“禁止通行”互斥且完全覆盖。
+
+节点top接收一个布尔输入Button，并调用TrafficLight生成Red、Yellow、Green、Walk、DontWalk等信号。top内部定义CarsAllowed（车辆允许通行）为Green或Yellow为真时成立，即系统需求为：车辆在绿灯或黄灯阶段允许通行，在红灯阶段不允许通行。top的输出R1未被赋值，因此在该代码中没有定义与R1相关的功能需求。
