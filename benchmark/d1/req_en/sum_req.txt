@@ -1,3 +1,3 @@
-The node sum receives an integer input A and returns an integer output S. S is computed as an accumulator. The Chinese requirement states that at the initial instant, the previous value of S is taken as A; from the next instant onward, S is equal to the current input A plus the previous value of S, so S accumulates A over cycles.
+The node sum receives an integer input A and returns an integer output S. S is computed as an accumulator. At the initial instant, the history term used for the previous value of S is 0, so the initial output S is equal to the current input A. From the next instant onward, S is equal to the current input A plus the previous value of S, so S accumulates A over cycles.
 
 The function plus receives two integer inputs A and B and returns an integer output X. X is always A + B.
